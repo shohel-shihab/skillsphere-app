@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import {
@@ -16,10 +17,10 @@ export default function Navbar() {
   return (
     <nav className="w-full border-b border-gray-200 bg-white">
       <div className="flex items-center justify-between px-4 py-4 lg:px-10">
-        
+
         {/* LEFT */}
         <div className="flex items-center gap-4">
-          
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -40,22 +41,17 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <ul className="hidden lg:flex items-center gap-8 ml-10">
             <li>
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="relative font-semibold text-teal-700"
               >
                 Home
                 <span className="absolute left-0 -bottom-2 h-[2px] w-full rounded-full bg-teal-700"></span>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
-                href="#"
-                className="text-gray-500 transition hover:text-teal-700"
-              >
-                Courses
-              </a>
+              <Link className="text-gray-500 transition hover:text-teal-700" href="/all-courses">All Courses</Link>
             </li>
 
             <li>
@@ -71,7 +67,7 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className="flex items-center gap-2 sm:gap-3">
-          
+
           {/* Search */}
           <div className="relative hidden md:block">
             <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -106,9 +102,8 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div
-        className={`overflow-hidden transition-all duration-300 lg:hidden ${
-          menuOpen ? "max-h-60 border-t border-gray-200" : "max-h-0"
-        }`}
+        className={`overflow-hidden transition-all duration-300 lg:hidden ${menuOpen ? "max-h-60 border-t border-gray-200" : "max-h-0"
+          }`}
       >
         <ul className="flex flex-col gap-5 px-6 py-5 bg-white">
           <li>
