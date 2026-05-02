@@ -1,32 +1,46 @@
 "use client"
 import { Check } from "@gravity-ui/icons";
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const RegistrationPage = () => {
-    const onSubmit = async(e) => {
+    const router = useRouter();
+    const onSubmit = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
-        const photo = e.target.photo.value;
+        const image = e.target.photo.value;
         const password = e.target.password.value;
-        console.log({ name, email, photo, password })
+        // console.log({ name, email, photo, password })
 
-        const {data,error}=await authClient.signUp.email({
+        const { data, error } = await authClient.signUp.email({
             name,
             email,
-            photo,
+            image,
             password
         })
 
-        console.log({data,error})
+        if (error) {
+            toast.error(error.message || "Registration failed");
+            return;
+        }
+        toast.success("Registration successful");
 
+        router.push("/login")
 
+    }
+    const googleSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        });
     }
     return (
         <div className="my-10 ">
             <Form className="flex w-96 flex-col mx-auto gap-4" onSubmit={onSubmit}>
+                <Card.Title className="text-center text-2xl">Please Register!</Card.Title>
                 <TextField
                     isRequired
                     name="name"
@@ -88,6 +102,10 @@ const RegistrationPage = () => {
                     </Button>
                 </div>
             </Form>
+            <div className="text-center">
+                <p className="my-2 text-2xl text-blue-400">------------- Or ------------------</p>
+                <Button onClick={googleSignIn}>Google Sign In</Button>
+            </div>
             <p className="text-center text-xl mt-2">Allredy Registered <span className="underline text-blue-500"><Link href="/login">Login</Link></span></p>
         </div>
 

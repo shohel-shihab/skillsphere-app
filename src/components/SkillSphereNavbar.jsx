@@ -10,9 +10,13 @@ import {
   FiMenu,
   FiX,
 } from "react-icons/fi";
-
+import { authClient } from "@/lib/auth-client"
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const userData = authClient.useSession();
+  const user = userData.data?.user;
+  console.log(user)
+
 
   return (
     <nav className="w-full border-b border-gray-200 bg-white">
@@ -83,6 +87,11 @@ export default function Navbar() {
           <Link href="/registration">
             <button className="cursor-pointer font-semibold text-teal-700">
               Registration
+            </button>
+          </Link>
+          <Link href="/login">
+            <button className="cursor-pointer font-semibold text-teal-700">
+              Login
             </button>
           </Link>
 
