@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import React from 'react'
 import { FaStar } from 'react-icons/fa'
 
-const PopularCourseCard = ({course}) => {
+const PopularCourseCard = ({ course }) => {
     return (
         <div
             key={course.id}
@@ -49,9 +50,11 @@ const PopularCourseCard = ({course}) => {
 
                 {/* Bottom */}
                 <div>
+                    <Link href={`/all-courses/${course.id}`}>
                     <button className="cursor-pointer flex justify-center items-center rounded-full bg-indigo-200 text-md text-gray-700 px-4 py-2 font-semibold transition hover:bg-indigo-200">
                         View Details
                     </button>
+                    </Link>
                 </div>
             </div>
         </div>
