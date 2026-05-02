@@ -1,9 +1,11 @@
 import HeroBanner from "@/components/HeroBanner";
+import PopularCourses from "@/components/PopularCourses";
 
 export default function Home() {
   return (
     <div>
       <HeroBanner></HeroBanner>
+      <PopularCourses></PopularCourses>
     </div>
   );
 }
