@@ -1,21 +1,29 @@
 "use client";
-
 import Link from "next/link";
 import { useState } from "react";
-
 import {
   FiSearch,
-  FiBell,
-  FiHelpCircle,
   FiMenu,
   FiX,
 } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client"
+import { Avatar } from "@heroui/react";
+import { useRouter } from "next/navigation";
 export default function Navbar() {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const userData = authClient.useSession();
   const user = userData.data?.user;
-  console.log(user)
+  const logOut = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login");
+        },
+      },
+    });
+  }
+  
 
 
   return (
@@ -83,29 +91,31 @@ export default function Navbar() {
             />
           </div>
 
-          {/* Notification */}
-          <Link href="/registration">
-            <button className="cursor-pointer font-semibold text-teal-700">
-              Registration
-            </button>
-          </Link>
-          <Link href="/login">
-            <button className="cursor-pointer font-semibold text-teal-700">
-              Login
-            </button>
-          </Link>
 
-          {/* Help */}
-          <button className="hidden rounded-full p-2 hover:bg-gray-100 sm:block">
-            <FiHelpCircle className="text-xl text-gray-600" />
-          </button>
+          {!user && <div className="flex gap-2">
+            <Link href="/registration">
+              <button className="cursor-pointer font-semibold text-teal-700">
+                Registration
+              </button>
+            </Link>
+            <Link href="/login">
+              <button className="cursor-pointer font-semibold text-teal-700">
+                Login
+              </button>
+            </Link>
+          </div>}
+          {
+            user && <div className="flex gap-2">
+              <button onClick={logOut} className="cursor-pointer font-semibold text-teal-700">
+                Logout
+              </button>
+              <Avatar>
+                <Avatar.Image alt="John Doe" src={user?.image} />
+              </Avatar>
 
-          {/* Avatar */}
-          <img
-            src="https://i.pravatar.cc/150?img=12"
-            alt="profile"
-            className="h-10 w-10 rounded-full border-2 border-cyan-200 object-cover sm:h-11 sm:w-11"
-          />
+
+            </div>
+          }
         </div>
       </div>
 
