@@ -80,11 +80,11 @@ export default function Navbar() {
           </div>
 
           {/* Notification */}
-          <button className="relative rounded-full p-2 hover:bg-gray-100">
-            <FiBell className="text-xl text-gray-600" />
-
-            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500"></span>
-          </button>
+          <Link href="/registration">
+            <button className="cursor-pointer font-semibold text-teal-700">
+              Registration
+            </button>
+          </Link>
 
           {/* Help */}
           <button className="hidden rounded-full p-2 hover:bg-gray-100 sm:block">
