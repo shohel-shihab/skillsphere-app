@@ -2,10 +2,14 @@
 import { UpdateUserProle } from "@/components/UpdateUserProle";
 import { authClient } from "@/lib/auth-client"
 import { Avatar, Card } from "@heroui/react";
+import { redirect } from "next/navigation";
 const ProfilePage = () => {
     const userData = authClient.useSession();
     const user = userData.data?.user;
 
+    // if(!user) {
+    //     redirect("/login")
+    // }
     return (
         <Card className="max-w-90 mx-auto flex felx-col justify-center items-center border-blue-500 p-4 my-20">
             <Avatar>
