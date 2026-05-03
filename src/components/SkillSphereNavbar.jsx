@@ -23,7 +23,7 @@ export default function Navbar() {
       },
     });
   }
-  
+
 
 
   return (
@@ -67,12 +67,9 @@ export default function Navbar() {
             </li>
 
             <li>
-              <a
-                href="#"
-                className="text-gray-500 transition hover:text-teal-700"
-              >
-                My Profile
-              </a>
+              <li>
+                <Link className="text-gray-500 transition hover:text-teal-700" href="/profile">My Profile</Link>
+              </li>
             </li>
           </ul>
         </div>
@@ -110,7 +107,7 @@ export default function Navbar() {
                 Logout
               </button>
               <Avatar>
-                <Avatar.Image alt="John Doe" src={user?.image} />
+                <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
               </Avatar>
 
 
