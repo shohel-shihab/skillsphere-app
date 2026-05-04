@@ -29,11 +29,7 @@ export default function Navbar() {
   return (
     <nav className="w-full border-b border-gray-200 bg-white">
       <div className="flex items-center justify-between px-4 py-4 lg:px-10">
-
-        {/* LEFT */}
         <div className="flex items-center gap-4">
-
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="lg:hidden"
@@ -44,32 +40,36 @@ export default function Navbar() {
               <FiMenu className="text-2xl text-gray-700" />
             )}
           </button>
-
-          {/* Logo */}
           <h1 className="text-2xl font-bold text-teal-700 sm:text-3xl">
             SkillSphere
           </h1>
 
           {/* Desktop Menu */}
+
           <ul className="hidden lg:flex items-center gap-8 ml-10">
             <li>
-              <Link
-                href="/"
-                className="relative font-semibold text-teal-700"
-              >
+              <Link href="/" className="relative font-semibold text-teal-700">
                 Home
                 <span className="absolute left-0 -bottom-2 h-[2px] w-full rounded-full bg-teal-700"></span>
               </Link>
             </li>
 
             <li>
-              <Link className="text-gray-500 transition hover:text-teal-700" href="/all-courses">All Courses</Link>
+              <Link
+                href="/all-courses"
+                className="text-gray-500 transition hover:text-teal-700"
+              >
+                All Courses
+              </Link>
             </li>
 
             <li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-teal-700" href="/profile">My Profile</Link>
-              </li>
+              <Link
+                href="/profile"
+                className="text-gray-500 transition hover:text-teal-700"
+              >
+                My Profile
+              </Link>
             </li>
           </ul>
         </div>
@@ -123,42 +123,28 @@ export default function Navbar() {
       >
         <ul className="flex flex-col gap-5 px-6 py-5 bg-white">
           <li>
-            <a
-              href="#"
-              className="font-semibold text-teal-700"
-            >
+            <Link href="/" className="font-semibold text-teal-700">
               Home
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="#"
-              className="text-gray-600"
+            <Link
+              href="/all-courses"
+              className="text-gray-500 transition hover:text-teal-700"
             >
-              Courses
-            </a>
+              All Courses
+            </Link>
           </li>
 
           <li>
-            <a
-              href="#"
-              className="text-gray-600"
+            <Link
+              href="/profile"
+              className="text-gray-500 transition hover:text-teal-700"
             >
               My Profile
-            </a>
+            </Link>
           </li>
-
-          {/* Mobile Search */}
-          <div className="relative mt-2 md:hidden">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full rounded-full border border-gray-200 bg-gray-100 py-2 pl-11 pr-4 outline-none focus:border-teal-500"
-            />
-          </div>
         </ul>
       </div>
     </nav>
