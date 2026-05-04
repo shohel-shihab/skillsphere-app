@@ -69,6 +69,8 @@ Users can:
 * Tailwind CSS
 * HeroUI
 * React Icons
+* Motion
+
 
 ## Authentication
 

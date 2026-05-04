@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FiSearch,
   FiMenu,
@@ -9,9 +9,13 @@ import {
 import { authClient } from "@/lib/auth-client"
 import { Avatar } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { FaUserGraduate } from "react-icons/fa";
 export default function Navbar() {
+
+  const [mounted, setMounted] = useState(false);
+
+
+
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const userData = authClient.useSession();
@@ -25,6 +29,11 @@ export default function Navbar() {
       },
     });
   }
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) return null;
 
 
 

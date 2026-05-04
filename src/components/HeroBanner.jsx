@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Card, Chip, ProgressBar } from "@heroui/react";
-
+import { motion } from "framer-motion";
 
 export default function HeroBanner() {
   return (
@@ -20,7 +20,7 @@ export default function HeroBanner() {
       <div className="absolute inset-0 bg-teal-900/75" />
 
       {/* Main Content */}
-      <div className="relative z-10  flex min-h-screen justify-between items-center flex-col   gap-16 px-5 py-14 lg:flex-row lg:px-10">
+      <div className="relative z-10 flex min-h-screen justify-between items-center flex-col gap-16 px-5 py-14 lg:flex-row lg:px-10">
         
         {/* LEFT */}
         <div className="max-w-2xl text-center lg:text-left">
@@ -32,20 +32,50 @@ export default function HeroBanner() {
             NEW LEARNING PATHS
           </Chip>
 
-          <h1 className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
-            Upgrade Your Skills
+          {/* 🔥 Animated Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl"
+          >
+            <motion.span
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="inline-block"
+            >
+              Upgrade Your Skills
+            </motion.span>
             <br />
-            Today 🚀
-          </h1>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              Today 🚀
+            </motion.span>
+          </motion.h1>
 
-          <p className="mt-6 text-base leading-7 text-gray-200 sm:text-lg">
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-6 text-base leading-7 text-gray-200 sm:text-lg"
+          >
             Master the most in-demand technologies and creative
             skills with expert-led courses designed for your
             career growth.
-          </p>
+          </motion.p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
-            
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start"
+          >
             <Button
               size="lg"
               radius="lg"
@@ -62,22 +92,22 @@ export default function HeroBanner() {
             >
               View Pricing
             </Button>
-          </div>
+          </motion.div>
         </div>
 
         {/* RIGHT CARD */}
-        <div className="w-full max-w-2xl">
-          
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-2xl"
+        >
           <Card className="rotate-2 border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur-xl">
             
-            {/* Course Card */}
             <div className="rounded-2xl bg-white p-5">
-              
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 
-                {/* Left */}
                 <div className="flex items-center gap-4">
-                  
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-100 text-2xl">
                     🧠
                   </div>
@@ -86,24 +116,20 @@ export default function HeroBanner() {
                     <h3 className="text-lg font-semibold text-gray-800 sm:text-xl">
                       AI Fundamentals
                     </h3>
-
                     <p className="text-sm text-gray-500">
                       Instructor: Sarah Chen
                     </p>
                   </div>
                 </div>
 
-                {/* Rating */}
                 <div className="w-fit rounded-lg bg-gray-100 px-3 py-2 text-sm font-semibold text-gray-700">
                   4.9 ⭐
                 </div>
               </div>
             </div>
 
-            {/* Progress */}
             <div className="mt-6">
               <ProgressBar
-                aria-label="Loading..."
                 value={75}
                 classNames={{
                   indicator: "bg-purple-600",
@@ -116,7 +142,7 @@ export default function HeroBanner() {
               </p>
             </div>
           </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

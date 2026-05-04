@@ -2,14 +2,14 @@
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { BiUser } from "react-icons/bi";
 import { authClient } from "@/lib/auth-client"
-export function UpdateUserProle() {
+export function UpdateUserProfile() {
     const handleUpdate = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const image = e.target.photo.value;
         await authClient.updateUser({
             name,
-           image
+            image
         })
     }
     return (
