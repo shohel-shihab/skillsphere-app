@@ -9,6 +9,8 @@ import {
 import { authClient } from "@/lib/auth-client"
 import { Avatar } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { FaUserGraduate } from "react-icons/fa";
 export default function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,9 +42,12 @@ export default function Navbar() {
               <FiMenu className="text-2xl text-gray-700" />
             )}
           </button>
-          <h1 className="text-2xl font-bold text-teal-700 sm:text-3xl">
-            SkillSphere
-          </h1>
+          <Link href={`/`}>
+            <h1 className="text-2xl font-bold text-teal-700 sm:text-3xl flex gap-2 items-center cursor-pointer">
+              <FaUserGraduate /> SkillSphere
+            </h1>
+          </Link>
+
 
           {/* Desktop Menu */}
 
@@ -50,7 +55,7 @@ export default function Navbar() {
             <li>
               <Link href="/" className="relative font-semibold text-teal-700">
                 Home
-                <span className="absolute left-0 -bottom-2 h-[2px] w-full rounded-full bg-teal-700"></span>
+
               </Link>
             </li>
 
